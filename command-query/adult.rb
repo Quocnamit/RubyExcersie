@@ -1,6 +1,7 @@
 class Adult
   def initialize
-    @sober = true;
+    @sober = true
+    @count = 0
   end
 
   def sober?
@@ -8,6 +9,7 @@ class Adult
   end
 
   def consume_an_alcoholic_beverage
-    @sober = true
+    @count += 1
+    @sober = @count > 2 ? false : true
   end
 end
