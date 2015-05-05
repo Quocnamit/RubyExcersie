@@ -1,9 +1,5 @@
 
 class Bag < Array
-  def count
-    self.length
-  end
-
   def candies
     self
   end
