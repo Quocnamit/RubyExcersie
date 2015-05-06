@@ -8,66 +8,66 @@ class HashTest < Minitest::Homework
 
   def test_empty
     boolean = {}.empty?
-    maybe boolean
+    assert boolean
     boolean = {"a" => "apple"}.empty?
-    maybe boolean
+    refute boolean
   end
 
   def test_access
     ages = {16 => ["Alice", "Bob"], 24 => ["Charlie", "Dave"], 37 => ["Eve"]}
-    assert_equal __, ages[16]
-    assert_equal __, ages[37]
+    assert_equal ["Alice", "Bob"], ages[16]
+    assert_equal ["Eve"], ages[37]
   end
 
   def test_assignment
     stuff = {"a" => ["aardvark", "apple"], "b" => ["butcher", "ballerina"]}
     stuff["c"] = ["cook", "caramel candy"]
-    assert_equal __, stuff["c"]
+    assert_equal ["cook", "caramel candy"], stuff["c"]
     stuff["b"] = "brandy"
-    assert_equal __, stuff["b"]
+    assert_equal "brandy", stuff["b"]
     stuff["a"] = stuff["a"] + ["apricot"]
-    assert_equal __, stuff["a"]
+    assert_equal ["aardvark", "apple", "apricot"], stuff["a"]
   end
 
   def test_keys
-    assert_equal __, {}.keys
-    assert_equal __, {1 => "one", 2 => "two"}.keys
-    assert_equal __, {"a" => "apple", "banana" => "b"}.keys
+    assert_equal [], {}.keys
+    assert_equal [1, 2], {1 => "one", 2 => "two"}.keys
+    assert_equal ["a", "banana"], {"a" => "apple", "banana" => "b"}.keys
   end
 
   def test_values
-    assert_equal __, {}.values
-    assert_equal __, {1 => "one", 2 => "two"}.values
-    assert_equal __, {"a" => "apple", "banana" => "b"}.values
+    assert_equal [], {}.values
+    assert_equal ["one", "two"], {1 => "one", 2 => "two"}.values
+    assert_equal ["apple", "b"], {"a" => "apple", "banana" => "b"}.values
   end
 
   def test_include
     boolean = {}.include?("a")
-    maybe boolean
+    refute boolean
     boolean = {"a" => "apple"}.include?("a")
-    maybe boolean
+    assert boolean
     boolean = {"a" => "apple"}.include?("apple")
-    maybe boolean
+    refute boolean
   end
 
   def test_member
     boolean = {}.member?("a")
-    maybe boolean
+    refute boolean
     boolean = {"a" => "apple"}.member?("a")
-    maybe boolean
+    assert boolean
     boolean = {"a" => "apple"}.member?("apple")
-    maybe boolean
+    refute boolean
   end
 
   def test_invert
-    assert_equal __, {"a" => "apple", "b" => "banana"}.invert
-    assert_equal __, {1 => "one", 2 => "two"}.invert
+    assert_equal ({"apple" => "a", "banana" => "b"}), ({"a" => "apple", "b" => "banana"}.invert)
+    assert_equal ({"two" => 2, "one" => 1}), ({1 => "one", 2 => "two"}.invert)
   end
 
   def test_length
-    assert_equal __, {}.length
-    assert_equal __, {"a" => "apple"}.length
-    assert_equal __, {"a" => "apple", "b" => "banana"}.length
+    assert_equal 0, {}.length
+    assert_equal 1, {"a" => "apple"}.length
+    assert_equal 2, {"a" => "apple", "b" => "banana"}.length
   end
 
   def test_merge
@@ -77,11 +77,11 @@ class HashTest < Minitest::Homework
     h4 = {"a" => "apple"}.merge({"a" => "avocado", "b" => "banana"})
     h5 = {"a" => "apple", "b" => "banana"}.merge({"b" => "breadfruit"})
 
-    assert_equal __, h1
-    assert_equal __, h2
-    assert_equal __, h3
-    assert_equal __, h4
-    assert_equal __, h5
+    assert_equal ({}), h1
+    assert_equal ({"a" => "apple"}), h2
+    assert_equal ({"a" => "apple", "b" => "banana"}), h3
+    assert_equal ({"a" => "avocado", "b" => "banana"}), h4
+    assert_equal ({"a" => "apple", "b" => "breadfruit"}), h5
   end
 
   def test_update
@@ -91,10 +91,10 @@ class HashTest < Minitest::Homework
     h4 = {"a" => "apple"}.update({"a" => "avocado", "b" => "banana"})
     h5 = {"a" => "apple", "b" => "banana"}.update({"b" => "breadfruit"})
 
-    assert_equal __, h1
-    assert_equal __, h2
-    assert_equal __, h3
-    assert_equal __, h4
-    assert_equal __, h5
+    assert_equal ({}), h1
+    assert_equal ({"a" => "apple"}), h2
+    assert_equal ({"a" => "apple", "b" => "banana"}), h3
+    assert_equal ({"a" => "avocado", "b" => "banana"}), h4
+    assert_equal ({"a" => "apple", "b" => "breadfruit"}), h5
   end
 end
