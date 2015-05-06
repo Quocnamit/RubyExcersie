@@ -19,7 +19,7 @@ class SparklyTest < Minitest::Test
     assert_equal "hello *.*:*.*", sparkly1
 
     sparkly2 = Sparkly.new(s).to_s
-    assert_equal "hello *.*:*.*", sparkly2
+    assert_equal "hello *.*:*.* *.*:*.*", sparkly2
   end
 
   def test_sparklify_is_kind_of_dangerous
@@ -29,6 +29,6 @@ class SparklyTest < Minitest::Test
     end
 
     greeting = "#{s}, Mike"
-    assert_equal "hello, Mike", greeting
+    assert_equal "hello *.*:*.* *.*:*.* *.*:*.*, Mike", greeting
   end
 end
