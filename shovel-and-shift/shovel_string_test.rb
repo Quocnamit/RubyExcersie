@@ -9,15 +9,15 @@ class ShovelStringTest < Minitest::Homework
   def test_string_equality
     s1 = ""
     s2 = ""
-    maybe s1.object_id == s2.object_id
-    maybe s1 == s2
+    refute s1.object_id == s2.object_id
+    assert s1 == s2
   end
 
   def test_shovel_emptiness
     s1 = ""
     s2 = s1 << ""
-    maybe s1.object_id == s2.object_id
-    maybe s1 == s2
+    refute s1.object_id == s2.object_id
+    assert s1 == s2
   end
 
   def test_add_emptiness
